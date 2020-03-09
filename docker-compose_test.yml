@@ -1,0 +1,8 @@
+version: "2"
+services:
+  rtppythonmeetup-djang-dev:
+    container_name: rtppythonmeetup_django_dev
+    extends:
+      file: docker-compose.yml
+      service: rtppythonmeetup-django
+    command: ["./start", "test"]
