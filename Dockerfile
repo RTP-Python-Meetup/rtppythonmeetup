@@ -7,10 +7,19 @@ RUN apk update && \
 ARG PROJECT=rtppythonmeetup
 ARG PROJECT_DIR=/opt/$PROJECT
 
-RUN adduser $PROJECT -D
+ARG UNAME=$PROJECT
+ARG UID=1000
 
-RUN mkdir -p $PROJECT_DIR && \
-    chown rtppythonmeetup:rtppythonmeetup $PROJECT_DIR
+RUN adduser \
+        --disabled-password \
+        --gecos "" \
+        --home "$PROJECT_DIR" \
+        --ingroup "$USER" \
+        --no-create-home \
+        --uid "$UID" \
+        "$UNAME" && \
+    mkdir -p $PROJECT_DIR && \
+    chown $UNAME:$UNAME $PROJECT_DIR
 
 USER $PROJECT
 WORKDIR $PROJECT_DIR
