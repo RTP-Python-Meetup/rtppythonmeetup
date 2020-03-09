@@ -14,7 +14,6 @@ RUN adduser \
         --disabled-password \
         --gecos "" \
         --home "$PROJECT_DIR" \
-        --ingroup "$USER" \
         --no-create-home \
         --uid "$UID" \
         "$UNAME" && \
