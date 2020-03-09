@@ -1,0 +1,18 @@
+version: "2"
+services:
+  rtppythonmeetup-django:
+    container_name: rtppythonmeetup_django
+    build:
+      context: .
+    image: rtppythonmeetup_django
+    stdin_open: true
+    tty: true
+    volumes:
+      - .:/opt/rtppythonmeetup
+      # - rtppythonmeetup-db:/opt/rtppythonmeetup/db:Z
+    command: ["./start", "prod"]
+    ports:
+      - "127.0.0.1:8001:8000"
+
+#volumes:
+#  rtppythonmeetup-db:

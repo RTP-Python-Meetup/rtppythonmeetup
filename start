@@ -1,0 +1,16 @@
+#!/bin/sh
+
+cd rtppythonmeetup
+
+case $1 in
+    dev)
+        pipenv install --dev
+        exec pipenv run python manage.py runserver 0.0.0.0:8000
+        ;;
+    prod)
+        exec pipenv run gunicorn rtppythonmeetup.wsgi:application --bind 0.0.0.0:8000 --workers 3
+        ;;
+    *)
+        echo "Usage: $0 <dev|prod>"
+        ;;
+esac
