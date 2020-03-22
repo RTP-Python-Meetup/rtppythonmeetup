@@ -13,8 +13,6 @@ ARG UID=1000
 RUN adduser \
         --disabled-password \
         --gecos "" \
-        --home "$PROJECT_DIR" \
-        --no-create-home \
         --uid "$UID" \
         "$UNAME" && \
     mkdir -p $PROJECT_DIR && \
