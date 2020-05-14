@@ -5,10 +5,10 @@ cd rtppythonmeetup
 case $1 in
     dev)
         pipenv install --dev
-        exec pipenv run python manage.py runserver 0.0.0.0:8000
+        exec pipenv run python manage.py runserver 0.0.0.0:8001
         ;;
     prod)
-        exec pipenv run gunicorn rtppythonmeetup.wsgi:application --bind 0.0.0.0:8000 --workers 3
+        exec pipenv run gunicorn rtppythonmeetup.wsgi:application --bind 0.0.0.0:8001 --workers 3
         ;;
     test)
         pipenv install --dev
